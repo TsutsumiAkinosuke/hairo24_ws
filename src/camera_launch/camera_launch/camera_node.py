@@ -59,7 +59,7 @@ class CameraNode(Node):
             gray1 = cv2.cvtColor(self.frame1, cv2.COLOR_BGR2GRAY)
             resized1 = cv2.resize(gray1, (self.width, self.height))
             self.image_msg1 = self.bridge.cv2_to_imgmsg(resized1, encoding="mono8")
-            self.image_publisher1.publish(image_msg1)
+            self.image_publisher1.publish(self.image_msg1)
 
         ret2, self.frame2 = self.camera2.read()
 
@@ -67,7 +67,7 @@ class CameraNode(Node):
             gray2 = cv2.cvtColor(self.frame2, cv2.COLOR_BGR2GRAY)
             resized2 = cv2.resize(gray2, (self.width, self.height))
             self.image_msg2 = self.bridge.cv2_to_imgmsg(resized2, encoding="mono8")
-            self.image_publisher2.publish(image_msg2)
+            self.image_publisher2.publish(self.image_msg2)
     
     def close(self):
         self.camera1.release()
